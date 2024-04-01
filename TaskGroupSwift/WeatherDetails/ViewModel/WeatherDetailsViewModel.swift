@@ -25,6 +25,7 @@ final class WeatherDetailsViewModel: ObservableObject {
         var weatherDetails: [WeatherForecast] = []
         Task {
             try await withThrowingTaskGroup(of: WeatherForecast.self) { group in
+                weatherDetails.reserveCapacity(selectedCities.count)
                 for city in selectedCities {
                     group.addTask {
                         let webService = WebService(cityID: String(city.id))
