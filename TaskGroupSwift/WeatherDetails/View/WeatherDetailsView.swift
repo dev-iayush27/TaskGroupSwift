@@ -12,12 +12,13 @@ struct WeatherDetailsView: View {
     
     var body: some View {
         ZStack {
-            List {
-                ForEach(self.viewModel.weatherDetailsForCities ?? [], id: \.city.id) { weatherForecast in
-                    WeatherDetailsRow(weatherForecast: weatherForecast)
+            if !self.viewModel.weatherDetailsForCities.isEmpty {
+                List {
+                    ForEach(self.viewModel.weatherDetailsForCities, id: \.city.id) { weatherForecast in
+                        WeatherDetailsRow(weatherForecast: weatherForecast)
+                    }
                 }
             }
-            
             if viewModel.isLoading {
                 ProgressView().tint(.blue)
             }

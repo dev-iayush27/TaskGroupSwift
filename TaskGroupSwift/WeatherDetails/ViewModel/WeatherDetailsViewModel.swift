@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 final class WeatherDetailsViewModel: ObservableObject {
-    @Published var weatherDetailsForCities: [WeatherForecast]? = []
+    @Published var weatherDetailsForCities: [WeatherForecast] = []
     @Published var error: ErrorType?
     @Published var isLoading: Bool = false
     
@@ -21,7 +21,7 @@ final class WeatherDetailsViewModel: ObservableObject {
     
     func callWeatherForecatAPI() async {
         self.isLoading = true
-        self.weatherDetailsForCities?.removeAll()
+        self.weatherDetailsForCities.removeAll()
         var weatherDetails: [WeatherForecast] = []
         Task {
             try await withThrowingTaskGroup(of: WeatherForecast.self) { group in
