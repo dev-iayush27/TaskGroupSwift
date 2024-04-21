@@ -25,7 +25,7 @@ struct WeatherDetailsView: View {
         }
         .navigationTitle("Weather Details")
         .task {
-            await self.viewModel.callWeatherForecatAPI()
+            await self.viewModel.callWeatherForecastAPI()
         }
     }
 }

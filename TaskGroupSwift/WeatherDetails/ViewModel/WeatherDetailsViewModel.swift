@@ -19,7 +19,7 @@ final class WeatherDetailsViewModel: ObservableObject {
         self.selectedCities = selectedCities
     }
     
-    func callWeatherForecatAPI() async {
+    func callWeatherForecastAPI() async {
         self.isLoading = true
         self.weatherDetailsForCities.removeAll()
         var weatherDetails: [WeatherForecast] = []
